@@ -21,7 +21,6 @@ nav a{text-decoration:none}
 .hero .wrap{position:relative;z-index:2;padding-top:140px;padding-bottom:170px}
 .hero h1{font-size:clamp(2.6rem,8vw,5.6rem);line-height:.98;letter-spacing:-.03em;font-weight:800;margin:0 0 18px;max-width:12ch}
 .hero p{max-width:34em;font-size:1.2rem;margin:0 0 28px}
-.sun{position:absolute;right:12%;bottom:30%;width:min(26vw,220px);aspect-ratio:1;border-radius:50%;background:#ffd27a;box-shadow:0 0 90px 30px rgba(255,190,90,.55)}
 .finder{position:relative;z-index:3;margin:-70px auto 0;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;max-width:1060px;box-shadow:0 18px 40px rgba(20,18,42,.25)}
 @media(max-width:700px){.finder{grid-template-columns:1fr;margin:-50px 20px 0}}
 label{display:grid;gap:4px;font:600 .9rem "Bricolage Grotesque",sans-serif;color:var(--muted)}
