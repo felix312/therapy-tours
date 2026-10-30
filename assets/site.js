@@ -1,0 +1,2 @@
+(function(){var n=document.getElementById("news");if(n)n.onsubmit=function(ev){ev.preventDefault();location.href="mailto:info@therapytours.com?subject="+encodeURIComponent("Newsletter subscription")+"&body="+encodeURIComponent("Please add me to your newsletter: "+document.getElementById("nEmail").value)};
+var w=document.querySelector(".wa"),c=document.getElementById("contact");if(w&&c&&"IntersectionObserver"in window)new IntersectionObserver(function(e){w.style.display=e[0].isIntersecting?"none":""}).observe(c)})();
