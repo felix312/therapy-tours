@@ -20,8 +20,7 @@
 <header class="hero">
   <div class="slides" aria-hidden="true"><img src="https://images.pexels.com/photos/35634915/pexels-photo-35634915.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="" fetchpriority="high" decoding="async"><img src="https://images.pexels.com/photos/28972656/pexels-photo-28972656.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" loading="lazy" decoding="async"><img src="https://images.pexels.com/photos/36507054/pexels-photo-36507054.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" loading="lazy" decoding="async"></div>
   <nav aria-label="Main"><a class="logo" href="#" style="display:flex;align-items:center;gap:10px"><img loading="lazy" decoding="async" src="assets/logo.webp" alt="" width="46" height="46" style="border-radius:50%">Therapy Tours &amp; Travel</a>
-  <div class="links"><a href="#tours">Safaris</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a class="btn" href="#plan" style="padding:8px 18px">Plan my trip</a></div></nav>
-  <div class="sun" aria-hidden="true"></div>
+  <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks"><span></span></button><div class="links" id="navlinks"><a href="#tours">Safaris</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a class="btn" href="#plan" style="padding:8px 18px">Plan my trip</a></div></nav>
   <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <path d="M0 300V235c120-18 220-6 340-14s250-22 380-10 300 20 480-4v93z" fill="#2a1a3a"/>
     <g fill="#120d22"><path d="M0 300v-40c150-14 300-8 450-16s300-6 450-12 200 4 300 0v68z"/>
@@ -94,7 +93,7 @@
     <label>Travel month<input id="pWhen" placeholder="e.g. August 2027"></label>
     <label>Travellers<input id="pPax" type="number" min="1" value="2"></label>
     <label style="grid-column:1/-1">Anything we should know<textarea id="pMsg" rows="3"></textarea></label>
-    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="submit">Send on WhatsApp</button><button class="btn alt" type="button" id="pMail">Send by email</button></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" id="pWa" href="https://wa.me/254791266470" target="_blank" rel="noopener">Send on WhatsApp</a><a class="btn alt" id="pMail" href="mailto:info@therapytours.com">Send by email</a></div>
   </form>
 </div></div></section>
 
@@ -103,7 +102,7 @@
     <a class="ft-logo" href="index.html">THERAPY <span>TOURS &amp; TRAVEL</span></a>
     <div class="ft-nav" role="navigation" aria-label="Footer"><a href="index.html">Home</a><a href="index.html#about">About</a><a href="packages.html">Packages</a><a href="index.html#faq">FAQ</a><a href="index.html#plan">Plan a trip</a><a href="#contact">Contact</a></div>
     <hr>
-    <div class="ft-sm"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    <div class="ft-sm"><a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a><a href="terms-and-conditions.html" target="_blank" rel="noopener">Terms and Conditions</a></div>
     <div class="ft-sm"><a href="tel:+254791266470">0791266470</a><a href="tel:0183228297">018 3228297</a><a href="mailto:reservations@therapytours.com">reservations@therapytours.com</a><a href="mailto:info@therapytours.com">info@therapytours.com</a></div>
     <div class="ft-sm"><a href="#" rel="noopener">Instagram</a><a href="#" rel="noopener">Facebook</a><a href="#" rel="noopener">TikTok</a><a href="#" rel="noopener">TripAdvisor</a></div>
     <p class="ft-fine">therapytours.com 2026. All rights reserved.</p>
@@ -112,7 +111,7 @@
   <div class="ft-main">
     <img src="https://images.pexels.com/photos/16168264/pexels-photo-16168264.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Safari vehicle exploring the Maasai Mara landscape" loading="lazy" decoding="async">
     <h2>Start Your African Adventure Today.</h2>
-    <form class="ft-news" id="news"><div class="row"><input id="nEmail" type="email" required autocomplete="email" placeholder="Subscribe to our newsletter" aria-label="Email address"><button class="btn" type="submit">Subscribe &rarr;</button></div><small>Get exclusive safari deals and travel inspiration delivered to your inbox.</small></form>
+    <form class="ft-news" id="news"><div class="row"><input id="nEmail" type="email" required autocomplete="email" placeholder="Subscribe to our newsletter" aria-label="Email address"><button class="btn" type="submit">Subscribe &rarr;</button></div><small>Get exclusive safari deals and travel inspiration delivered to your inbox.</small><small id="nMsg" role="status"></small></form>
   </div>
 </footer>
 
@@ -123,6 +122,11 @@
 <script>
 var PHONE="254791266470";
 document.getElementById("finder").onsubmit=function(ev){ev.preventDefault();var z=document.getElementById("fDest").value;location.href="packages.html"+(z?"?z="+encodeURIComponent(z):"")};
+function planMsg(){return "Hello! I\u2019d like to plan a safari.\nName: "+pName.value+"\nDestination: "+pDest.value+"\nWhen: "+(pWhen.value||"flexible")+"\nTravellers: "+pPax.value+"\nNotes: "+(pMsg.value||"none")}
+function planGo(e,url){if(!document.getElementById("planForm").reportValidity()){e.preventDefault();return}e.currentTarget.href=url}
+document.getElementById("pWa").onclick=function(e){planGo(e,"https://wa.me/"+PHONE+"?text="+encodeURIComponent(planMsg()))};
+document.getElementById("pMail").onclick=function(e){planGo(e,"mailto:info@therapytours.com?subject="+encodeURIComponent("Safari enquiry from "+pName.value)+"&body="+encodeURIComponent(planMsg()))};
+document.getElementById("planForm").onsubmit=function(ev){ev.preventDefault()};
 </script>
 <script src="assets/site.js" defer></script>
 </body>
